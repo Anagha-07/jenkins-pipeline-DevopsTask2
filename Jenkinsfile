@@ -16,6 +16,24 @@ pipeline {
             }
         }
 
+        stage('Clean old container') {
+            steps {
+                script {
+                    def containerExists = sh (
+                        script: "docker ps -a -q -f name=jenkins-demo",
+                        returnStdout: true
+                    ).trim()
+
+                    if (containerExists) {
+                        echo "Removing existing container with ID: ${containerExists}"
+                        sh "docker rm -f jenkins-demo"
+                    } else {
+                        echo "No existing container named jenkins-demo found."
+                    }
+                }
+            }
+        }
+
         stage('Run Container') {
             steps {
                 echo 'Running Docker container...'
