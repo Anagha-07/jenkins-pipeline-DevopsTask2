@@ -12,8 +12,6 @@ The pipeline stages include:
 - Building a Docker image of the Flask app  
 - Running the app container on port 5000  
 
-This task helped solidify foundational skills in Jenkins pipeline creation, Docker containerization, and automated deployment.
-
 ---
 
 ## 🛠️ Tech Stack
